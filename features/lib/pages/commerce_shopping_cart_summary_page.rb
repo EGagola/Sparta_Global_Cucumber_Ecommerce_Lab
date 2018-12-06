@@ -3,6 +3,13 @@ require 'capybara/dsl'
 class CommerceShoppingCartSummaryPage
   include Capybara::DSL
 
+  attr_reader :confirmation_message, :product_name
+
+  def initialize
+    @confirmation_message = "Your order on My Store is complete."
+    @product_name = "Blouse"
+  end
+
   def click_proceed_to_checkout_confirm_order_summary
     find('.standard-checkout').click
   end
@@ -31,7 +38,12 @@ class CommerceShoppingCartSummaryPage
     find("p[class = 'cheque-indent']").text
   end
 
-  def check_cart_quantity
+  def check_product_ordered_quantity
     find('#summary_products_quantity').text
   end
+
+  def check_product_ordered_name
+    find('#product_2_7_0_120702').find('.cart_description').find('.product-name').text
+  end
+
 end

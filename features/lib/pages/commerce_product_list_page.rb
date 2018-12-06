@@ -6,5 +6,5 @@ class CommerceProductListPage
   def click_product product_name
     find("img[title = '#{product_name}']").click
   end
-
+  
 end
