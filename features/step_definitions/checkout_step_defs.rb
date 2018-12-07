@@ -31,7 +31,7 @@ When("I confirm the order") do
   commerce_shopping_cart_summary_page.click_proceed_to_checkout_shipping
 end
 
-When("I select a payment option") do
+When("I select a wire payment option") do
   commerce_shopping_cart_summary_page.click_pay_by_bank_wire
   commerce_shopping_cart_summary_page.click_confirm_order
 end
@@ -46,4 +46,13 @@ end
 
 Then("I want to see the number of products in my cart") do
   expect(commerce_shopping_cart_summary_page.check_product_ordered_quantity).to eq "1 Product"
+end
+
+When("I select a cheque payment option") do
+  commerce_shopping_cart_summary_page.click_pay_by_cheque
+  commerce_shopping_cart_summary_page.click_confirm_order
+end
+
+Then("I want a confirmation that my order by cheque is complete") do
+  expect(commerce_shopping_cart_summary_page.get_result_of_cheque_order_message).to eq commerce_shopping_cart_summary_page.confirmation_message
 end
