@@ -46,4 +46,12 @@ class CommerceShoppingCartSummaryPage
     find('#product_2_7_0_120702').find('.cart_description').find('.product-name').text
   end
 
+  def click_pay_by_cheque
+    find('a[title = "Pay by check."]').click
+  end
+
+  def get_result_of_cheque_order_message
+    find('p[class = "alert alert-success"]').text
+  end
+
 end
